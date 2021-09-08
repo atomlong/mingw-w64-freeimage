@@ -12,6 +12,8 @@ pkgbase = mingw-w64-freeimage
 	options = !buildflags
 	options = staticlibs
 	source = http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage3180.zip
+	source = fix-build-with-gcc-11.patch
 	md5sums = f8ba138a3be233a3eed9c456e42e2578
+	md5sums = bf39b5ea49cb494282a42da3c255505f
 
 pkgname = mingw-w64-freeimage

@@ -15,12 +15,15 @@ url="http://freeimage.sourceforge.net/"
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-gcc)
 options=(!strip !buildflags staticlibs)
-source=("http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage${pkgver//./}.zip")
-md5sums=('f8ba138a3be233a3eed9c456e42e2578')
+source=("http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage${pkgver//./}.zip"
+		fix-build-with-gcc-11.patch)
+md5sums=('f8ba138a3be233a3eed9c456e42e2578'
+		 'bf39b5ea49cb494282a42da3c255505f')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd FreeImage
+  patch -Np1 -i ../fix-build-with-gcc-11.patch
   sed -i "s|IMPORTLIB = \$(TARGET).lib|IMPORTLIB = \$(TARGET).dll.a|g" Makefile.mingw
   sed -i 's/#include "..\\x86\\x86.h"/#include "..\/x86\/x86.h"/' Source/LibJXR/image/sys/strcodec.h
   rm Source/LibJXR/common/include/guiddef.h

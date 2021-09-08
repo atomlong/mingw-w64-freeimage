@@ -1,0 +1,11 @@
+diff -durN FreeImage.orig/Makefile.mingw FreeImage/Makefile.mingw
+--- FreeImage.orig/Makefile.mingw	2015-03-10 09:04:12.000000000 +0800
++++ FreeImage/Makefile.mingw	2021-09-08 11:54:17.360022200 +0800
+@@ -69,6 +69,7 @@
+ CFLAGS += $(INCLUDE)
+ CXXFLAGS ?= -O3 -fexceptions -Wno-ctor-dtor-privacy -DNDEBUG $(WIN32_CXXFLAGS)
+ CXXFLAGS += $(INCLUDE)
++CXXFLAGS += -std=c++14 -D_USE_MATH_DEFINES
+ RCFLAGS ?= -DNDEBUG
+ LDFLAGS ?= -s -shared -static -Wl,-soname,$(SOLIBNAME) $(WIN32_LDFLAGS)
+ DLLTOOLFLAGS ?= --add-stdcall-underscore
